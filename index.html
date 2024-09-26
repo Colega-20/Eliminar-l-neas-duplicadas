@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eliminar Líneas Duplicadas</title>
+    <link rel="icon" href="icon.jpeg" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="watermark">By: Colega/Edisson</div>
+    <div id="contenedor">
+      <h1>Eliminar Líneas Duplicadas</h1>
+      <textarea
+        id="inputText"
+        placeholder="Ingrese su lista aquí, una línea por elemento"
+      ></textarea>
+
+      <h2>Resultado:</h2>
+      <textarea id="outputText" readonly></textarea>
+
+      <button onclick="removeDuplicates()">Eliminar Duplicados</button>
+    </div>
+
+    <script>
+      function removeDuplicates() {
+        const input = document.getElementById("inputText").value;
+        const lines = input.split("\n");
+        const uniqueLines = [...new Set(lines)];
+        const output = uniqueLines.join("\n");
+        document.getElementById("outputText").value = output;
+      }
+
+      //notas
+      const notas = {
+        version: "Web: v1.0",
+        build: "Build: 24.9.2024",
+        fecha: "Fecha: 24.9.2024",
+        by: "By: Colega/Edisson",
+      };
+
+      console.log(notas["version"]);
+      console.log(notas["build"]);
+      console.log(notas["fecha"]);
+      console.log(notas["by"]);
+    </script>
+  </body>
+</html>
