@@ -24,11 +24,16 @@
 
     <script>
       function removeDuplicates() {
-        const input = document.getElementById("inputText").value;
+        const inputTextarea = document.getElementById("inputText");
+        const outputTextarea = document.getElementById("outputText");
+
+        const input = inputTextarea.value;
         const lines = input.split("\n");
         const uniqueLines = [...new Set(lines)];
         const output = uniqueLines.join("\n");
-        document.getElementById("outputText").value = output;
+
+        outputTextarea.value = output;
+        inputTextarea.value = ""; // Clear the input textarea
       }
 
       //notas
