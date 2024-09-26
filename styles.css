@@ -1,28 +1,51 @@
 body {
   font-family: Arial, sans-serif;
-  max-width: 600px;
   background: radial-gradient(#1d2431, #020c1af5);
-  margin: 0 auto;
   overflow: auto;
   color: #fff;
   text-align: center;
-  padding: 0 20px;
   background-attachment: fixed;
+}
+
+/* Scrollbars */
+*::-webkit-scrollbar {
+  width: 6px;
+  background-color: #000000;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: #000000;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #252525;
 }
 
 textarea {
   border: 1px solid rgb(103 103 103);
   border-radius: 4px;
-  text-align: left;
   color: #fff;
   background-color: #141c1b54;
-  /* padding: 6px; */
-  /* margin: 8px; */
   outline: none;
-  width: 100%;
-  height: 200px;
-  margin-bottom: 10px;
+  min-width: 700px;
+  max-width: 100%;
+  margin: 10px;
+  padding: 6px;
 }
+
+textarea:last-of-type {
+  color: yellow;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+#botones {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
 button {
   padding: 10px;
   border-radius: 5%;
@@ -31,16 +54,41 @@ button {
   border: none;
   cursor: pointer;
 }
+
 button:hover {
   background-color: #398d3d;
 }
+
+button:first-of-type {
+  background-color: #912c2c;
+}
+
+button:first-of-type:hover {
+  background-color: #883939;
+}
+
+button:nth-last-of-type(2) {
+  background-color: #312c91;
+}
+button:nth-last-of-type(2):hover {
+  background-color: #3d3988;
+}
+
+h2:first-of-type {
+  margin: 15px 0 0;
+}
+
 /* marca de agua */
 #watermark {
-  position: fixed;
-  right: 1%;
-
-  color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  top: 1%;
+  color: rgba(255, 255, 255, 0.3);
   font-size: 14px;
-
   user-select: none;
+}
+
+@media (max-width: 767px) {
+  textarea {
+    min-width: 90%;
+  }
 }

@@ -9,37 +9,66 @@
   </head>
   <body>
     <div id="watermark">By: Colega/Edisson</div>
-    <div id="contenedor">
+
+    <div>
       <h1>Eliminar Líneas Duplicadas</h1>
       <textarea
+        rows="15"
         id="inputText"
         placeholder="Ingrese su lista aquí, una línea por elemento"
       ></textarea>
 
       <h2>Resultado:</h2>
-      <textarea id="outputText" readonly></textarea>
+      <textarea id="outputText" rows="15"></textarea>
 
-      <button onclick="removeDuplicates()">Eliminar Duplicados</button>
+      <div id="botones">
+        <button onclick="copiar()">Copiar</button>
+        <button onclick="removeDuplicates()">Eliminar Duplicados</button>
+        <a href="https://github.com/Colega-20/Eliminar-lineas-duplicadas">
+          <button>Github</button>
+        </a>
+      </div>
     </div>
 
     <script>
+      function copiar() {
+        // Copiar el resultado JSON al portapapeles
+        var resultado = document.getElementById("outputText");
+        resultado.select();
+        document.execCommand("copy");
+      }
+
       function removeDuplicates() {
         const inputTextarea = document.getElementById("inputText");
         const outputTextarea = document.getElementById("outputText");
 
         const input = inputTextarea.value;
         const lines = input.split("\n");
-        const uniqueLines = [...new Set(lines)];
-        const output = uniqueLines.join("\n");
+
+        // Usar un objeto para almacenar líneas únicas
+        const uniqueLines = {};
+
+        lines.forEach((line) => {
+          const [email] = line.split(":");
+          if (email) {
+            // Convertir email a minúsculas para comparación insensible a mayúsculas
+            const lowerEmail = email.toLowerCase();
+            // Almacenar la línea original usando el email en minúsculas como clave
+            uniqueLines[lowerEmail] = line;
+          }
+        });
+
+        // Convertir el objeto de vuelta a un array de líneas únicas
+        const output = Object.values(uniqueLines).join("\n");
 
         outputTextarea.value = output;
-        inputTextarea.value = ""; // Clear the input textarea
+        inputTextarea.value = ""; // Limpiar el textarea de entrada
       }
 
       //notas
       const notas = {
-        version: "Web: v1.0",
-        build: "Build: 24.9.2024",
+        version: "Web: v1.0.2",
+        build: "Build: 25.9.2024",
         fecha: "Fecha: 24.9.2024",
         by: "By: Colega/Edisson",
       };
